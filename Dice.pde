@@ -1,29 +1,62 @@
+
 void setup()
 {
+	size(500, 600);
 	noLoop();
+	background(128);
+	ellipseMode(RADIUS);
+	textAlign(CENTER, CENTER);
 }
 void draw()
 {
-	//your code here
+	int total = 0;
+	for(int i = 0; i<500; i+=10){
+		for(int j = 0; j<500; j+=10){
+			Die gamer = new Die(i,j);
+			gamer.show();
+			total+=gamer.dots;
+		}	
+	}
+	text("Total roll: " + total, 250, 550);
 }
 void mousePressed()
 {
 	redraw();
+
 }
 class Die //models one single dice cube
 {
-	//variable declarations here
+	int x, y, dots;
 	
-	Die(int x, int y) //constructor
+	Die(int a, int b) //constructor
 	{
-		//variable initializations here
+		x = a;
+		y = b;
+		roll();
 	}
 	void roll()
 	{
-		//your code here
+		dots = (int)(Math.random()*6+1);
 	}
 	void show()
 	{
-		//your code here
+		fill((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
+		rect(x, y, 10, 10);
+		fill(0);
+		if(dots%2==1){
+			ellipse(x+5, y+5, 1, 1);
+		}
+		if(dots>=2){
+			ellipse(x+2, y+8, 1, 1);
+			ellipse(x+8, y+2, 1, 1);
+		}
+		if(dots>=4){
+			ellipse(x+2, y+2, 1, 1);
+			ellipse(x+2, y+2, 1, 1);
+		}
+		if(dots==6){
+			ellipse(x+2, y+5, 1, 1);
+			ellipse(x+8, y+5, 1, 1);
+		}
 	}
 }
