@@ -17,6 +17,7 @@ void draw()
 			total+=gamer.dots;
 		}	
 	}
+	fill(0);
 	text("Total roll: " + total, 250, 550);
 }
 void mousePressed()
