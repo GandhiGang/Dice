@@ -45,6 +45,7 @@ class Die //models one single dice cube
 		fill((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
 		rect(x, y, 10, 10);
 		stroke(0);
+		fill(0);
 		if(dots%2==1){
 			ellipse(x+5, y+5, 1, 1);
 		}
